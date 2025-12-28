@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Rooms</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            margin: 20px 0;
+            color: #2c3e50;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            background-color: #27ae60;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #2ecc71;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            background-color: white;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #2980b9;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        a {
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+
+        a:hover {
+            opacity: 0.8;
+        }
+
+        /* Specific action buttons */
+        td a:first-child {
+            background-color: #3498db;
+            color: white;
+            margin-right: 5px;
+        }
+
+        td a:nth-child(2) {
+            background-color: #e74c3c;
+            color: white;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Hotel Rooms</h2>
+
+<div align="center">
+    <a class="btn" th:href="@{/rooms/add}">Add New Room</a>
+</div>
+<br>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Type</th>
+        <th>Price</th>
+        <th>Available</th>
+        <th>Action</th>
+    </tr>
+
+    <tr th:each="r : ${rooms}">
+        <td th:text="${r.roomid}"></td>
+        <td th:text="${r.roomtype}"></td>
+        <td th:text="${r.price}"></td>
+        <td th:text="${r.avaliable}"></td>
+        <td>
+            <span th:if="${r.avaliable}">
+                <a th:href="@{/booking/{id}(id=${r.roomid})}">Check-In</a>
+            </span>
+            <span th:if="${!r.avaliable}">
+                <a th:href="@{/checkout/{id}(id=${r.roomid})}">Checkout</a>
+            </span>
+            |
+            <a th:href="@{/rooms/delete/{id}(id=${r.roomid})}">Delete</a>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

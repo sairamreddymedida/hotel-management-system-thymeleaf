@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Room Booking</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            margin: 30px 0;
+            color: #2c3e50;
+        }
+
+        form {
+            width: 360px;
+            margin: auto;
+            padding: 25px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: 600;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        input:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            width: 100%;
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #3498db;
+        }
+
+        div a {
+            text-decoration: none;
+            color: #2980b9;
+            font-weight: 500;
+        }
+
+        div a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Room Check-In</h2>
+
+<form th:action="@{/booking/{id}(id=${roomId})}" th:object="${booking}" method="post">
+
+    <label>Guest Name</label>
+    <input type="text" th:field="*{guestname}" required>
+
+    <label>Check-In Date</label>
+    <input type="date" th:field="*{checkin}" required>
+
+    <label>Check-Out Date</label>
+    <input type="date" th:field="*{checkout}" required>
+
+    <button type="submit">Book Room</button>
+
+</form>
+
+<div align="center" style="margin-top:15px;">
+    <a th:href="@{/rooms}">Back to Rooms</a>
+</div>
+
+</body>
+</html>

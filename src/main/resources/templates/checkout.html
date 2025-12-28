@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            margin: 30px 0;
+            color: #2c3e50;
+        }
+
+        form {
+            width: 320px;
+            margin: auto;
+            padding: 25px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        input[type="hidden"] {
+            display: none;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px;
+            width: 100%;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff4d4d;
+        }
+
+        div a {
+            text-decoration: none;
+            color: #2980b9;
+            font-weight: 500;
+        }
+
+        div a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Room Checkout</h2>
+
+<form th:action="@{/checkout/{id}(id=${bookingId})}" method="post">
+    <input type="hidden" th:value="${bookingId}">
+    <button type="submit">Checkout</button>
+</form>
+
+<div align="center" style="margin-top:15px;">
+    <a th:href="@{/rooms}">Back to Rooms</a>
+</div>
+
+</body>
+</html>
