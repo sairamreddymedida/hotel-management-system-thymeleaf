@@ -108,6 +108,7 @@
             </span>
             <span th:if="${!r.avaliable}">
                 <a th:href="@{/checkout/{id}(id=${r.roomid})}">Checkout</a>
+
             </span>
             |
             <a th:href="@{/rooms/delete/{id}(id=${r.roomid})}">Delete</a>

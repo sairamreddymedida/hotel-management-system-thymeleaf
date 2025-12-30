@@ -37,7 +37,9 @@ public class roomcontroller {
 
     @DeleteMapping("/deleteall")
     public String deleteallroom() {
-        return "Your room has been deleted";
+        s.deleteallroom();
+        return "All rooms deleted!";
     }
+
 }
 

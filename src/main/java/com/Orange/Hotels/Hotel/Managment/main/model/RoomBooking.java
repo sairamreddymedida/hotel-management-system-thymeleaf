@@ -9,7 +9,7 @@ import java.time.LocalDate;
 public class RoomBooking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long roomid;
+    private long bookingid;
     @ManyToOne
     private room room;
 
@@ -27,17 +27,25 @@ public class RoomBooking {
         this.total = total;
     }
 
+
+    public long getBookingid() {
+        return bookingid;
+    }
+
+    public void setBookingid(long bookingid) {
+        this.bookingid = bookingid;
+    }
+
     @Override
     public String toString() {
-        return "RoomBooking{" + "roomid=" + roomid + ", room=" + room + ", guestname='" + guestname + '\'' + ", checkin=" + checkin + ", checkout=" + checkout + '}';
-    }
-
-    public long getRoomid() {
-        return roomid;
-    }
-
-    public void setRoomid(long roomid) {
-        this.roomid = roomid;
+        return "RoomBooking{" +
+                "bookingid=" + bookingid +
+                ", room=" + room +
+                ", guestname='" + guestname + '\'' +
+                ", checkin=" + checkin +
+                ", checkout=" + checkout +
+                ", total=" + total +
+                '}';
     }
 
     public room getRoom() {

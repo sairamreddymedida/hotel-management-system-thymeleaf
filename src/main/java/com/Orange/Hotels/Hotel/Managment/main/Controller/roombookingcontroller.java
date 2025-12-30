@@ -18,8 +18,10 @@ public class roombookingcontroller {
         return s1.bookingroom(a, id);
     }
 
-    @PutMapping("/chechkout/{roomid}")
-    public String checkout(@PathVariable long roomid) {
-        return s1.Checkout(roomid);
+    @GetMapping("/checkout/{id}")
+    public String checkout(@PathVariable long id) {
+        s1.Checkout(id);
+        return "redirect:/rooms";
     }
+
 }

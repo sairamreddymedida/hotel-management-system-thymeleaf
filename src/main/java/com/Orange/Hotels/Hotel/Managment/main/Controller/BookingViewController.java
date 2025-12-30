@@ -32,7 +32,7 @@ public class BookingViewController {
         return "redirect:/rooms";
     }
 
-    @PostMapping("/checkout/{id}")
+    @GetMapping("/checkout/{id}")
     public String checkout(@PathVariable long id) {
         bookingService.Checkout(id);
         return "redirect:/rooms";
